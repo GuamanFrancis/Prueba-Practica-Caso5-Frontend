@@ -59,3 +59,12 @@ Pasos:
 4. Output directory: `dist`.
 5. Agrega variable de entorno en Vercel:
    - `VITE_API_URL` = URL pública de tu backend (ej. `https://tu-backend.com/api`).
+
+### Valor actual para producción
+Si usas tu backend desplegado en Render:
+
+```bash
+VITE_API_URL=https://plantilla-proyecto-ftgf.onrender.com/api
+```
+
+Nota: en Render puede aparecer `503` al inicio (cold start). Espera unos segundos e intenta de nuevo.
