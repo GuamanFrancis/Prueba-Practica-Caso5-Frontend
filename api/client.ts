@@ -26,3 +26,5 @@ client.interceptors.response.use((response) =>response, (error) =>{
     }
 
 });
+
+export default client;
