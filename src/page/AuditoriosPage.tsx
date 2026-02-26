@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 import type { Auditorio } from '../types/entities'
 import {
   createAuditorio,
@@ -31,7 +32,9 @@ export function AuditoriosPage() {
       const data = await getAuditorios()
       setAuditorios(data)
     } catch {
-      setError('No se pudo cargar la lista de auditorios.')
+      const message = 'No se pudo cargar la lista de auditorios.'
+      setError(message)
+      toast.error(message)
     }
   }
 
@@ -66,13 +69,17 @@ export function AuditoriosPage() {
     try {
       if (editingId !== null) {
         await updateAuditorio(editingId, formData)
+        toast.success('Auditorio actualizado correctamente')
       } else {
         await createAuditorio(formData)
+        toast.success('Auditorio creado correctamente')
       }
       handleCancel()
       await loadAuditorios()
     } catch {
-      setError('No se pudo guardar el auditorio. Revisa los datos.')
+      const message = 'No se pudo guardar el auditorio. Revisa los datos.'
+      setError(message)
+      toast.error(message)
     } finally {
       setIsSubmitting(false)
     }
@@ -84,8 +91,11 @@ export function AuditoriosPage() {
     try {
       await deleteAuditorio(id)
       await loadAuditorios()
+      toast.success('Auditorio eliminado correctamente')
     } catch {
-      setError('No se pudo eliminar el auditorio.')
+      const message = 'No se pudo eliminar el auditorio.'
+      setError(message)
+      toast.error(message)
     }
   }
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 import type { Conferencista } from '../types/entities'
 import {
   createConferencista,
@@ -33,7 +34,9 @@ export function ConferenciasPage() {
       const data = await getConferencistas()
       setConferencistas(data)
     } catch {
-      setError('No se pudo cargar la lista de conferencistas.')
+      const message = 'No se pudo cargar la lista de conferencistas.'
+      setError(message)
+      toast.error(message)
     }
   }
 
@@ -67,13 +70,17 @@ export function ConferenciasPage() {
     try {
       if (editingId !== null) {
         await updateConferencista(editingId, formData)
+        toast.success('Conferencista actualizado correctamente')
       } else {
         await createConferencista(formData)
+        toast.success('Conferencista creado correctamente')
       }
       handleCancel()
       await loadConferencistas()
     } catch {
-      setError('No se pudo guardar el conferencista. Revisa los datos.')
+      const message = 'No se pudo guardar el conferencista. Revisa los datos.'
+      setError(message)
+      toast.error(message)
     } finally {
       setIsSubmitting(false)
     }
@@ -85,15 +92,18 @@ export function ConferenciasPage() {
     try {
       await deleteConferencista(id)
       await loadConferencistas()
+      toast.success('Conferencista eliminado correctamente')
     } catch {
-      setError('No se pudo eliminar el conferencista.')
+      const message = 'No se pudo eliminar el conferencista.'
+      setError(message)
+      toast.error(message)
     }
   }
 
   return (
     <section className="management-page conferencias-page">
       <header className="management-page__header">
-        <h1 className="management-page__title">Conferencias</h1>
+        <h1 className="management-page__title">Conferencista</h1>
         <p className="management-page__subtitle">Administra conferencistas del sistema.</p>
       </header>
 

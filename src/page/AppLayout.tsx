@@ -60,7 +60,7 @@ export function AppLayout() {
             </NavLink>
             <NavLink to="/conferencias" className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}>
               <span className="nav-icon"></span>
-              <span className="nav-label">Conferencias</span>
+              <span className="nav-label">Conferencistas</span>
             </NavLink>
             <NavLink to="/auditorios" className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}>
               <span className="nav-icon"></span>

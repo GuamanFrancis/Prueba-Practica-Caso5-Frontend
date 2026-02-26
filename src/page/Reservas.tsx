@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 import type { Auditorio, Conferencista, Reserva } from '../types/entities'
 import { getAuditorios } from '../api/auditorios.api'
 import { getConferencistas } from '../api/conferencias.api'
@@ -35,7 +36,9 @@ export function ReservasPage() {
       setConferencistas(listConferencistas)
       setAuditorios(listAuditorios)
     } catch {
-      setError('No se pudieron cargar los datos de reservas.')
+      const message = 'No se pudieron cargar los datos de reservas.'
+      setError(message)
+      toast.error(message)
     }
   }
 
@@ -50,7 +53,9 @@ export function ReservasPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!formData.conferencistaId || !formData.auditorioId) {
-      setError('Debes seleccionar un conferencista y un auditorio.')
+      const message = 'Debes seleccionar un conferencista y un auditorio.'
+      setError(message)
+      toast.error(message)
       return
     }
 
@@ -60,8 +65,11 @@ export function ReservasPage() {
       await createReserva(formData)
       setFormData(EMPTY_FORM)
       await loadAll()
+      toast.success('Reserva creada correctamente')
     } catch {
-      setError('No se pudo crear la reserva.')
+      const message = 'No se pudo crear la reserva.'
+      setError(message)
+      toast.error(message)
     } finally {
       setIsSubmitting(false)
     }
@@ -73,8 +81,11 @@ export function ReservasPage() {
     try {
       await deleteReserva(id)
       await loadAll()
+      toast.success('Reserva eliminada correctamente')
     } catch {
-      setError('No se pudo eliminar la reserva.')
+      const message = 'No se pudo eliminar la reserva.'
+      setError(message)
+      toast.error(message)
     }
   }
 

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 import { useAuth } from '../hook/useAuth'
 import { loginApi } from '../api/auth.api'
 import '../styles/LoginPage.css'
@@ -24,6 +25,7 @@ export function LoginPage() {
     try {
       const data = await loginApi(email, clave)  
       login(data.token, data.user)               
+      toast.success('Inicio de sesión exitoso')
       navigate('/')                              
     } catch (err: unknown) {
      
@@ -36,9 +38,12 @@ export function LoginPage() {
         'data' in err.response
       ) {
         const responseData = err.response.data as { error?: { message?: string } }
-        setError(responseData?.error?.message ?? 'Usuario o contraseña incorrectos.')
+        const message = responseData?.error?.message ?? 'Usuario o contraseña incorrectos.'
+        setError(message)
+        toast.error(message)
       } else {
         setError('Usuario o contraseña incorrectos.')
+        toast.error('Usuario o contraseña incorrectos.')
       }
     } finally {
       setIsLoading(false)
