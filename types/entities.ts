@@ -13,3 +13,48 @@ export interface User {
     email: string
 
 }
+
+export interface Conferencista {
+  id: number       
+  nombre:       String
+  apellido:     String
+  email:        String | null
+  telefono:     String| null
+  especialidad: String | null
+  createdAt:   string 
+  updatedAt:   string  
+  
+}
+
+export interface Auditorio {
+  id: number       
+  nombre: string
+  capacidad: number
+  ubicacion: string | null
+  createdAt: string 
+  updatedAt: string
+
+}
+
+
+export interface  Reserva {
+  id: number         
+  conferencistaId: number
+  auditorioId: number
+  fecha: string
+  tema: string | null
+  conferencista: Conferencista 
+  auditorio: Auditorio     
+  createdAt: string      
+  updatedAt: string      
+
+}
+
+
+
+ 
+ 
+
+
+
+
