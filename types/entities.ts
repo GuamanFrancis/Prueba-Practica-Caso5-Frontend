@@ -16,11 +16,11 @@ export interface User {
 
 export interface Conferencista {
   id: number       
-  nombre:       String
-  apellido:     String
-  email:        String | null
-  telefono:     String| null
-  especialidad: String | null
+  nombre: string
+  apellido: string
+  email: string | null
+  telefono: string | null
+  especialidad: string | null
   createdAt:   string 
   updatedAt:   string  
   

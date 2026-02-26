@@ -1,0 +1,15 @@
+@import './ManagementPages.css';
+
+.conferencias-page .management-page__title {
+	color: var(--text-dark);
+}
+
+.conferencias-page .management-page__panel-title {
+	border-left: 4px solid var(--accent);
+	padding-left: 0.6rem;
+}
+
+.conferencias-page .management-page__table td:nth-child(2) {
+	font-weight: 600;
+}
+

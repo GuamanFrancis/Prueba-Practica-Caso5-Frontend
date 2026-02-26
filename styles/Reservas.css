@@ -1,0 +1,15 @@
+@import './ManagementPages.css';
+
+.reservas-page .management-page__title {
+	color: var(--text-dark);
+}
+
+.reservas-page .management-page__panel-title {
+	border-left: 4px solid var(--accent);
+	padding-left: 0.6rem;
+}
+
+.reservas-page .management-page__table td:nth-child(4) {
+	white-space: nowrap;
+}
+

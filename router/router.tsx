@@ -1,21 +1,47 @@
-import { Navigate, Outlet } from "react-router-dom";
-import { useAuth } from "../hook/useAuth";
+
+import { createBrowserRouter } from 'react-router-dom'
+import PrivateRoute from './PrivateRouter'
+
+import PublicRoute from './PublicRouter'
+
+import DashboardPage from '../page/DashboardPage'
+import NotFoundPage from '../page/NotFoundPage'
+import { LoginPage } from '../page/LoginPage'
+import { AppLayout } from '../page/AppLayout'
+import { ConferenciasPage } from '../page/ConferenciasPage'
+import { AuditoriosPage } from '../page/AuditoriosPage'
+import { ReservasPage } from '../page/Reservas'
 
 
-function PrivateRoute() {
-
-const {token,isLoading } = useAuth();
-
-if (isLoading) {
-    return <div>Cargando...</div>
-}
 
 
+const router = createBrowserRouter([
 
-return token ? <Outlet /> : <Navigate to="/login" />
+  {
+    element: <PublicRoute/>,              
+    children: [
+      { path: '/login', element: <LoginPage /> },
+    ],
+  },
 
 
-}
+  {
+    element: <PrivateRoute />,
+    children: [{
+      element: <AppLayout />,        
+      children: [
+        { path: '/', element: <DashboardPage /> },
+        { path: '/conferencias', element: <ConferenciasPage /> },
+        { path: '/auditorios', element: <AuditoriosPage /> },
+        { path: '/reservas', element: <ReservasPage /> },
+      ],
+    }],
+  },
 
+  {
+    path: '*',
+    element: <NotFoundPage />,
+  },
+])
 
-export default PrivateRoute;
+export default router

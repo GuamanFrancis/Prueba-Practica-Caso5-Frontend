@@ -15,7 +15,7 @@ export function saveToken(token: string  ): void {
 
 export function getToken():string | null  {
 
-    return localStorage.getItemItem(TOKEN_KEY);
+    return localStorage.getItem(TOKEN_KEY);
     
 
 }

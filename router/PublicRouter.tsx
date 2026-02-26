@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../hook/useAuth";
 
-function PrivateRoute() {
+function PublicRoute() {
 
     const { token, isLoading } = useAuth();
 
@@ -17,4 +17,4 @@ function PrivateRoute() {
 }
 
 
-export default PrivateRoute;
+export default PublicRoute;

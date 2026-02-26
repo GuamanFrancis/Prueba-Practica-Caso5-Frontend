@@ -1,0 +1,15 @@
+@import './ManagementPages.css';
+
+.auditorios-page .management-page__title {
+	color: var(--text-dark);
+}
+
+.auditorios-page .management-page__panel-title {
+	border-left: 4px solid var(--accent);
+	padding-left: 0.6rem;
+}
+
+.auditorios-page .management-page__table td:nth-child(3) {
+	font-weight: 600;
+}
+
