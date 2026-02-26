@@ -1,0 +1,68 @@
+@import './ManagementPages.css';
+
+.dashboard-page {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.dashboard-page__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.dashboard-page__title {
+	font-size: 1.7rem;
+	color: var(--text-dark);
+	letter-spacing: -0.3px;
+}
+
+.dashboard-page__subtitle {
+	color: var(--text-muted);
+	font-size: 0.95rem;
+	margin-top: 0.3rem;
+}
+
+.dashboard-page__error {
+	background: #fee2e2;
+	color: #b91c1c;
+	border: 1px solid #fecaca;
+	border-radius: 10px;
+	padding: 0.8rem 1rem;
+	font-size: 0.92rem;
+}
+
+.dashboard-page__stats-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.dashboard-page__stat-card {
+	background: #ffffff;
+	border: 1px solid var(--navbar-border, #e5e7eb);
+	border-radius: 14px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+	padding: 1.15rem;
+}
+
+.dashboard-page__stat-label {
+	color: var(--text-muted);
+	font-size: 0.88rem;
+	margin-bottom: 0.45rem;
+}
+
+.dashboard-page__stat-value {
+	color: var(--accent);
+	font-size: 2rem;
+	line-height: 1;
+	font-weight: 700;
+}
+
+@media (max-width: 980px) {
+	.dashboard-page__stats-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
